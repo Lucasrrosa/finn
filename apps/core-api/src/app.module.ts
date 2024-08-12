@@ -16,11 +16,7 @@ import enviromentConfig, { EnviromentConfigType } from './config/enviroment.conf
             imports: [ConfigModule],
             useFactory: (configService: ConfigService) => ({
                 type: 'postgres',
-                host: configService.get<DatabaseConfig>('database').host,
-                username: configService.get<DatabaseConfig>('database').user,
-                password: configService.get<DatabaseConfig>('database').pass,
-                database: configService.get<DatabaseConfig>('database').name,
-                port: configService.get<DatabaseConfig>('database').port,
+                url: configService.get<DatabaseConfig>('database').url,
                 entities: [`${__dirname}/**/*.entity{.ts,.js}`],
                 logging: configService.get<EnviromentConfigType>('enviroment').nodenv === 'dev',
                 migrations: [`${__dirname}/migrations/*{.ts,.js}`],

@@ -8,11 +8,7 @@ const configService = new ConfigService()
 
 const dataSourceOptions: DataSourceOptions = {
     type: 'postgres',
-    host: configService.get('DATABASE_HOST'),
-    username: configService.get('DATABASE_USER'),
-    password: configService.get('DATABASE_PORT'),
-    database: configService.get('DATABASE_NAME'),
-    port: configService.get('DATABASE_PASS'),
+    url: configService.get('DATABASE_DIRECT_URL'),
     entities: [`${__dirname}/../../**/*.entity{.ts,.js}`],
     logging: configService.get('NODENV') === 'dev',
     migrations: [`${__dirname}/migrations/*{.ts,.js}`],

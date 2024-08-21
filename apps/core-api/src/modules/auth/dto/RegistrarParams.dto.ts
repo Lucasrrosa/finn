@@ -7,12 +7,8 @@ export class RegistrarParamsDto {
     @IsEmail()
     email: string
 
-    @IsString()
-    telefone: string
 
     @IsString()
     senha: string
 
-    @IsString()
-    nomeOrganizacao: string
 }

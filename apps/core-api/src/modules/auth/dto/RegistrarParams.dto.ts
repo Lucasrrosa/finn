@@ -1,6 +1,6 @@
+import { IRegistrarParamsDto } from '@finn/api-contracts'
 import { IsEmail, IsString } from 'class-validator'
-
-export class RegistrarParamsDto {
+export class RegistrarParamsDto  implements IRegistrarParamsDto {
     @IsString()
     nomeUsuario: string
 

@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom/client'
 import { Provider } from 'react-redux'
 
 import { ROUTES_CONFIG } from '@/configs/routes/routes-config'
-import theme from '@/configs/store/theme'
+import theme from '@/configs/theme'
 import '@fontsource/roboto/300.css'
 import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'

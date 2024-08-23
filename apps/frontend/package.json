@@ -36,6 +36,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@finn/api-contracts": "*",
     "@repo/eslint-config": "*",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",

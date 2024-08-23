@@ -41,6 +41,7 @@
     "typeorm": "^0.3.20"
   },
   "devDependencies": {
+    "@finn/api-contracts": "*",
     "@nestjs/cli": "^10.0.0",
     "@nestjs/schematics": "^10.0.0",
     "@nestjs/testing": "^10.0.0",
@@ -78,9 +79,8 @@
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],
-
     "moduleNameMapper": {
-        "@/(.*)$": "<rootDir>/$1"
+      "@/(.*)$": "<rootDir>/$1"
     },
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"

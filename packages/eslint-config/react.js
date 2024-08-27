@@ -46,6 +46,7 @@ module.exports = {
       'error',
       'never'
     ],
+    'no-unused-vars': ["error", { "args": "none" }],
     'space-in-brackets': 0,
     'indent': [
       'error',

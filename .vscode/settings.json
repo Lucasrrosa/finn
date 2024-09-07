@@ -4,6 +4,14 @@
         "source.organizeImports": "always",
         "source.fixAll.eslint": "always"
     },
+    "[typescript]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    },
     "typescript.preferences.importModuleSpecifier": "non-relative",
-    "javascript.preferences.importModuleSpecifier": "non-relative"
+    "javascript.preferences.importModuleSpecifier": "non-relative",
+    "typescript.format.semicolons": "remove",
+    "javascript.format.semicolons": "remove"
 }

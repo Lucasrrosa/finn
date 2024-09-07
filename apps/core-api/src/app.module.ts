@@ -5,6 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 import databaseConfig, { DatabaseConfig } from './config/database.config'
 import enviromentConfig, { EnviromentConfigType } from './config/enviroment.config'
 import { AuthModule } from './modules/auth/auth.module'
+import { ContaBancariaModule } from './modules/conta-bancaria/conta-bancaria.module'
+import { TransacaoModule } from './modules/transacao/transacao.module'
 import { UsuarioModule } from './modules/usuario/usuario.module'
 
 @Module({
@@ -28,6 +30,8 @@ import { UsuarioModule } from './modules/usuario/usuario.module'
         }),
         AuthModule,
         UsuarioModule,
+        ContaBancariaModule,
+        TransacaoModule,
     ],
     controllers: [],
     providers: [],

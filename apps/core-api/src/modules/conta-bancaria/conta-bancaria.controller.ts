@@ -2,7 +2,7 @@ import { Usuario } from '@/modules/auth/decorators/Usuario.decorator'
 import { ContaBancariaService } from '@/modules/conta-bancaria/conta-bancaria.service'
 import { CreateContaBancariaDto } from '@/modules/conta-bancaria/dto/CreateContaBancariaDto'
 import { GetAllContaBancaria } from '@/modules/conta-bancaria/usecases/GetAllContaBancaria.usecase'
-import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Inject, Param, Patch, Post } from '@nestjs/common'
+import { Body, Controller, Get, HttpCode, HttpStatus, Inject, Param, Post } from '@nestjs/common'
 
 @Controller('conta-bancaria')
 export class ContaBancariaController {
@@ -28,18 +28,18 @@ export class ContaBancariaController {
         return await this.getAllContaBancaria.execute(usuarioId)
     }
 
-    @Patch(':id')
-    async update(
-        @Param('id') id: string,
-        @Body() updateDto: Partial<CreateContaBancariaDto>,
-        @Usuario() usuarioId: string
-    ) {
-        return await this.contaBancariaService.update(id, updateDto, usuarioId)
-    }
+    // @Patch(':id')
+    // async update(
+    //     @Param('id') id: string,
+    //     @Body() updateDto: Partial<CreateContaBancariaDto>,
+    //     @Usuario() usuarioId: string
+    // ) {
+    //     return await this.contaBancariaService.update(id, updateDto, usuarioId)
+    // }
 
-    @Delete(':id')
-    async remove(@Param('id') id: string) {
-        return await this.contaBancariaService.remove(id)
-    }
+    // @Delete(':id')
+    // async remove(@Param('id') id: string) {
+    //     return await this.contaBancariaService.remove(id)
+    // }
 
 }

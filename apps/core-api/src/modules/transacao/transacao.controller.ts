@@ -25,7 +25,7 @@ export class TransacaoController {
     }
 
     @Get()
-    async fetByFiltro(@Query() params: FiltroTransacaoDto, @Usuario() usuarioId: string) {
+    async getByFiltro(@Query() params: FiltroTransacaoDto, @Usuario() usuarioId: string) {
         return await this.findTransacaoByFiltro.execute(params, usuarioId)
     }
 

@@ -25,7 +25,7 @@ export const ROUTES_CONFIG = createBrowserRouter([
         element: <LogInPage/>
     },
     {
-        path:'login',
+        path:'signin',
         element: <SigninPage/>
     }
 ])

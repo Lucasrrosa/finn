@@ -1,8 +1,9 @@
 import PrivatePage from '@/common/hooks/PrivatePage'
 import { LogInPage } from '@/modules/auth/pages/LogInPage'
 import { SigninPage } from '@/modules/auth/pages/SigninPage'
-import { ListaContasBancariasPage } from '@/modules/contas-bancarias/pages/ListaContasBancariasPage'
+import { CONTAS_BANCARIAS_ROUTES } from '@/modules/contas-bancarias/contas-bancarias-routes'
 import { MainLayout } from '@/modules/main/pages/MainLayout'
+import { TRANSACOES_ROUTES } from '@/modules/transacoes/transacoes-routes'
 import { createBrowserRouter } from 'react-router-dom'
 
 export const ROUTES_CONFIG = createBrowserRouter([
@@ -14,10 +15,9 @@ export const ROUTES_CONFIG = createBrowserRouter([
                 path: '/',
                 element: <>Main page</>
             },
-            {
-                path: '/conta-bancaria',
-                element: <ListaContasBancariasPage />
-            },
+            ...CONTAS_BANCARIAS_ROUTES,
+            ...TRANSACOES_ROUTES,
+            
         ]
     },
     {

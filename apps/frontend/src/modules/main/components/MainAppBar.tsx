@@ -11,7 +11,7 @@ const ROUTES = [
     {value:'/', label: 'Home'},
     {value:'/transacoes', label: 'Transações'},
     {value:'/conta-bancaria', label: 'Contas bancárias'},
-    {value:'/cartoes', label: 'Cartões'},
+    // {value:'/cartoes', label: 'Cartões'},
 ]
 export default function MainAppBar({userName}: Props) {
     const navigate = useNavigate()

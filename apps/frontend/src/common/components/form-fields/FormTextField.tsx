@@ -17,7 +17,7 @@ type Props<
 export default function FormTextField<
     TFieldValues extends FieldValues = FieldValues,
     TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->({ control, name, label, type, inputProps, fullWidth }: Props<TFieldValues, TName>) {
+>({ control, name, label, type, fullWidth }: Props<TFieldValues, TName>) {
     return (
         <Controller<TFieldValues>
             control={control}
@@ -31,7 +31,6 @@ export default function FormTextField<
                     helperText={error ? error.message : null}
                     label={label}
                     type={type}
-                    inputProps={inputProps}
                     fullWidth={fullWidth}
                 />
             )}

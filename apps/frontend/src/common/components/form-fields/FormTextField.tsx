@@ -1,14 +1,12 @@
+import { FormFieldBaseProps } from '@/common/components/types'
 import { InputBaseComponentProps, TextField } from '@mui/material'
-import { HTMLInputTypeAttribute, ReactNode } from 'react'
-import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
+import { HTMLInputTypeAttribute } from 'react'
+import { Controller, FieldPath, FieldValues } from 'react-hook-form'
 
 type Props<
     TFieldValues extends FieldValues = FieldValues,
     TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
-> = {
-    control: Control<TFieldValues>
-    name: TName
-    label: ReactNode
+> = FormFieldBaseProps<TFieldValues, TName> & {
     type?: HTMLInputTypeAttribute
     inputProps?: InputBaseComponentProps
     fullWidth?: boolean

@@ -1,19 +1,18 @@
+import { FormFieldBaseProps } from '@/common/components/types'
 import { Autocomplete, TextField } from '@mui/material'
 import { ReactNode } from 'react'
-import { Control, Controller, FieldPath, FieldValue, FieldValues } from 'react-hook-form'
+import { Controller, FieldPath, FieldValue, FieldValues } from 'react-hook-form'
 
 type OptionType<T> = T & {
     value: string
     label: ReactNode
 }
 
-type Props<TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>> = {
-    control: Control<TFieldValues>
-    name: TName
-    label: ReactNode
-    options: OptionType<FieldValue<TFieldValues>>[]
-    fullWidth?: boolean
-}
+type Props<TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>> =
+    FormFieldBaseProps<TFieldValues, TName> & {
+        options: OptionType<FieldValue<TFieldValues>>[]
+        fullWidth?: boolean
+    }
 
 export default function FormSelectField<
     TFieldValues extends FieldValues = FieldValues,

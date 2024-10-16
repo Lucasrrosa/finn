@@ -1,31 +1,23 @@
-import { TimePicker } from '@mui/x-date-pickers'
-import { ReactNode } from 'react'
-import { Control, Controller, FieldPath, FieldValues } from 'react-hook-form'
+import { FormFieldBaseProps } from '@/common/components/types'
+import { DatePicker } from '@mui/x-date-pickers'
+import { Controller, FieldPath, FieldValues } from 'react-hook-form'
 
-type Props<TFieldValues extends FieldValues = FieldValues, TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>> = {
-    control: Control<TFieldValues>
-    name: TName
-    label: ReactNode
-}
-
-export default function FormTimepickerField<
+export default function FormDatepickerField<
     TFieldValues extends FieldValues = FieldValues,
     TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->({ control, name, label }: Props<TFieldValues, TName>) {
+>({ control, name, label }: FormFieldBaseProps<TFieldValues, TName>) {
     return (
         <Controller
             control={control}
             name={name}
             render={({ field: { value, onChange }, fieldState: { error } }) => (
-                <TimePicker
+                <DatePicker
                     label={label}
                     value={value}
-                    timezone='UTC'
                     onChange={onChange}
                     closeOnSelect
-                    ampm={false}
-                    ampmInClock={false}
-                    format='HH:mm'
+                    timezone='UTC'
+                    format='dd/MM/yyyy'
                     slotProps={{
                         textField: {
                             error: !!error,

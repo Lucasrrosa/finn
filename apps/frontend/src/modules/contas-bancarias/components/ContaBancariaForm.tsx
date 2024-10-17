@@ -18,15 +18,17 @@ type Props = {
     isSubmitLoading?: boolean
 }
 
-export const ContaBancariaForm = ({ defaultValues, onSubmit, isSubmitLoading }: Props) => {
+export const ContaBancariaForm = ({  onSubmit, isSubmitLoading }: Props) => {
 
     const { control, handleSubmit, reset } = useForm<ContaBancariaFormType>({
-        defaultValues,
+        defaultValues: {
+            nome: 'Conta um'
+        },
         resolver: zodResolver(contaBancariaFormSchema)
     })
     return (
         <Stack component={'form'} direction={'column'} gap={2}>
-            <FormTextField control={control} name={'nome'} label='Nome da conta'/>
+            <FormTextField control={control} name={'nome'} label='Nome da conta' readonly />
             <FormTextField control={control} name={'saldoInicial'} label='Saldo inicial'/>
             <Stack direction={'row'} justifyContent={'flex-end'} gap={2}>
                 <Button variant={'outlined'} onClick={() => reset()} >Cancelar</Button>

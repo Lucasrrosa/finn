@@ -1,3 +1,4 @@
+import ReadOnlyField from '@/common/components/form-fields/ReadOnlyField'
 import { FormFieldBaseProps } from '@/common/components/types'
 import { DateTimePicker } from '@mui/x-date-pickers'
 import { Controller, FieldPath, FieldValues } from 'react-hook-form'
@@ -6,12 +7,14 @@ import { Controller, FieldPath, FieldValues } from 'react-hook-form'
 export default function FormDateTimepickerField<
     TFieldValues extends FieldValues = FieldValues,
     TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->({ control, name, label }: FormFieldBaseProps<TFieldValues, TName>) {
+>({ control, name, label, readonly }: FormFieldBaseProps<TFieldValues, TName>) {
     return (
         <Controller
             control={control}
             name={name}
-            render={({ field: { value, onChange }, fieldState: { error } }) => (
+            render={({ field: { value, onChange }, fieldState: { error } }) => readonly ? (
+                <ReadOnlyField label={label} value={value} />
+            ) : (
                 <DateTimePicker
                     label={label}
                     value={value || null}

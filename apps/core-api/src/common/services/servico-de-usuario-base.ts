@@ -24,7 +24,7 @@ export class ServicoDeUsuarioBase<Entidade extends UsuarioBaseEntityType, Create
 
     async findOne(id: string, usuarioId: string) {
         const where = { id: id, usuario: { id: usuarioId } } as unknown as FindOptionsWhere<Entidade>
-        const result = await this.repository.findOne({ where })
+        const result = await this.repository.findOne({ where, relations: ['usuario'] })
         if (!result) throw new NotFoundException(`Registro de id = ${id} não encontrado`)
         return this.entityToDto(result)
     }

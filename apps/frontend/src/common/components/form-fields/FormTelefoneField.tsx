@@ -17,13 +17,13 @@ TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 export default function FormTelefoneField<
 TFieldValues extends FieldValues = FieldValues,
 TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->({ control, name, label, type, inputProps, fullWidth, readonly }: Props<TFieldValues, TName>) {
+>({ control, name, label, type, inputProps, fullWidth, readOnly }: Props<TFieldValues, TName>) {
     return (
         <Controller<TFieldValues>
             control={control}
             name={name}
             render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => 
-                readonly ? (
+                readOnly ? (
                     <ReadOnlyField label={label} value={value} />
                 ) : (   
                     <TelefoneField 

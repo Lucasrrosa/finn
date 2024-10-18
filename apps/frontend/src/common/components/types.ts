@@ -5,5 +5,5 @@ export type FormFieldBaseProps<TFieldValues extends FieldValues = FieldValues, T
     control: Control<TFieldValues>
     name: TName
     label: ReactNode
-    readonly?: boolean
+    readOnly?: boolean
 }

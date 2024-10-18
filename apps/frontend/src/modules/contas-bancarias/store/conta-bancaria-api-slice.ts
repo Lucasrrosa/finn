@@ -1,5 +1,5 @@
 import { axiosBaseQuery } from '@/configs/api/axios-based-query'
-import { IContaBancariaResponseDto, ICreateContaBancariaDto } from '@finn/api-contracts'
+import { IContaBancariaResponseDto, ICreateContaBancariaDto, IUpdateContaBancariaDto } from '@finn/api-contracts'
 import { createApi } from '@reduxjs/toolkit/query/react'
 
 const CONTA_BANCARIA_URL = '/conta-bancaria'
@@ -16,11 +16,19 @@ export const contaBancariaApiSlice = createApi({
                 data: body,
             }),
         }),
-        findOneContaBancaria: builder.query<string, IContaBancariaResponseDto>({
+        findOneContaBancaria: builder.query<IContaBancariaResponseDto, string>({
             query: (id) => ({
                 method: 'GET',
                 url: `${CONTA_BANCARIA_URL}/${id}`,
             }),
+        }),
+
+        updateContaBancaria: builder.mutation<IContaBancariaResponseDto, {id: string} & IUpdateContaBancariaDto>({
+            query: ({id, ...dto}) => ({
+                method: 'PATCH',
+                url: `${CONTA_BANCARIA_URL}/${id}`,
+                data: dto
+            })
         }),
 
         findAllContaBancaria: builder.query<IContaBancariaResponseDto[], void>({
@@ -35,5 +43,6 @@ export const contaBancariaApiSlice = createApi({
 export const {
     useCreateContaBancariaMutation,
     useFindOneContaBancariaQuery,
-    useFindAllContaBancariaQuery
+    useFindAllContaBancariaQuery,
+    useUpdateContaBancariaMutation
 } = contaBancariaApiSlice

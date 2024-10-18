@@ -3,6 +3,7 @@ export interface ICreateContaBancariaDto {
     saldoInicial: number
 }
 
+
 export interface IContaBancariaResponseDto extends ICreateContaBancariaDto {
     id: string
     saldoAtual: number

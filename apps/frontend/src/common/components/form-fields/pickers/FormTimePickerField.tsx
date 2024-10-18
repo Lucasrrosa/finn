@@ -7,13 +7,13 @@ import { Controller, FieldPath, FieldValues } from 'react-hook-form'
 export default function FormTimepickerField<
     TFieldValues extends FieldValues = FieldValues,
     TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->({ control, name, label, readonly }: FormFieldBaseProps<TFieldValues, TName>) {
+>({ control, name, label, readOnly }: FormFieldBaseProps<TFieldValues, TName>) {
     return (
         <Controller
             control={control}
             name={name}
             render={({ field: { value, onChange }, fieldState: { error } }) => 
-                readonly ? (
+                readOnly ? (
                     <ReadOnlyField label={label} value={value} />
                 ) : (
                     <TimePicker

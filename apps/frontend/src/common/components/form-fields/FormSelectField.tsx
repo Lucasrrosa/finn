@@ -18,13 +18,13 @@ type Props<TFieldValues extends FieldValues = FieldValues, TName extends FieldPa
 export default function FormSelectField<
     TFieldValues extends FieldValues = FieldValues,
     TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->({ control, name, label, fullWidth, options, readonly }: Props<TFieldValues, TName>) {
+>({ control, name, label, fullWidth, options, readOnly }: Props<TFieldValues, TName>) {
     return (
         <Controller
             control={control}
             name={name}
             render={({ field: { value, onChange, onBlur }, fieldState: { error } }) => 
-                readonly ? (
+                readOnly ? (
                     <ReadOnlyField label={label} value={value} />
                 ) : (
                     <Autocomplete

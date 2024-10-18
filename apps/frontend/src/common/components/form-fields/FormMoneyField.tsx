@@ -1,22 +1,21 @@
 import ReadOnlyField from '@/common/components/form-fields/ReadOnlyField'
 import { FormFieldBaseProps } from '@/common/components/types'
-import { InputBaseComponentProps, TextField } from '@mui/material'
-import { HTMLInputTypeAttribute } from 'react'
+import { InputAdornment, InputBaseComponentProps, TextField } from '@mui/material'
 import { Controller, FieldPath, FieldValues } from 'react-hook-form'
+import { NumericFormat } from 'react-number-format'
 
 type Props<
     TFieldValues extends FieldValues = FieldValues,
     TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
 > = FormFieldBaseProps<TFieldValues, TName> & {
-    type?: HTMLInputTypeAttribute
     inputProps?: InputBaseComponentProps
     fullWidth?: boolean
 }
 
-export default function FormTextField<
+export default function FormMoneyField<
     TFieldValues extends FieldValues = FieldValues,
     TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->({ control, name, label, type, fullWidth, readOnly }: Props<TFieldValues, TName>) {
+>({ control, name, label, fullWidth, readOnly }: Props<TFieldValues, TName>) {
     return (
         <Controller<TFieldValues>
             control={control}
@@ -25,14 +24,21 @@ export default function FormTextField<
                 readOnly ? (
                     <ReadOnlyField label={label} value={value} />
                 ) : ( 
-                    <TextField
+                    <NumericFormat
+                        customInput={TextField}
                         value={value || ''}
                         onChange={onChange}
+                        thousandSeparator='.'
+                        decimalSeparator=','
+                        decimalScale={2}
+                        fixedDecimalScale
                         onBlur={onBlur}
                         error={!!error}
                         helperText={error ? error.message : null}
                         label={label}
-                        type={type}
+                        InputProps={{
+                            startAdornment: <InputAdornment position='start'>R$</InputAdornment>
+                        }}
                         fullWidth={fullWidth}
                     />
                 )}

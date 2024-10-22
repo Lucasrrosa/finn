@@ -1,12 +1,12 @@
+import { FormDateFieldProps } from '@/common/components/form-fields/pickers/types'
 import ReadOnlyField from '@/common/components/form-fields/ReadOnlyField'
-import { FormFieldBaseProps } from '@/common/components/types'
 import { DatePicker } from '@mui/x-date-pickers'
 import { Controller, FieldPath, FieldValues } from 'react-hook-form'
 
 export default function FormDatepickerField<
     TFieldValues extends FieldValues = FieldValues,
     TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->({ control, name, label, readOnly }: FormFieldBaseProps<TFieldValues, TName>) {
+>({ control, name, label, readOnly, minDate, maxDate }: FormDateFieldProps<TFieldValues, TName>) {
     return (
         <Controller
             control={control}
@@ -17,11 +17,13 @@ export default function FormDatepickerField<
                 ) : (
                     <DatePicker
                         label={label}
-                        value={value}
+                        value={value || null}
                         onChange={onChange}
                         closeOnSelect
                         timezone='UTC'
-                        format='dd/MM/yyyy'
+                        minDate={minDate}
+                        maxDate={maxDate}
+                        format='DD/MM/YYYY'
                         slotProps={{
                             textField: {
                                 error: !!error,

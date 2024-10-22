@@ -1,6 +1,6 @@
 import FormMoneyField from '@/common/components/form-fields/FormMoneyField'
 import FormTextField from '@/common/components/form-fields/FormTextField'
-import { numberValidator } from '@/common/utils/validators'
+import { numberValidator } from '@/common/validators/number-validator'
 import { zodResolver } from '@hookform/resolvers/zod'
 import LoadingButton from '@mui/lab/LoadingButton'
 import { Button, Stack } from '@mui/material'

@@ -7,3 +7,8 @@ export type FormFieldBaseProps<TFieldValues extends FieldValues = FieldValues, T
     label: ReactNode
     readOnly?: boolean
 }
+
+export type OptionType<T> = T & {
+    value: string
+    label: ReactNode
+}

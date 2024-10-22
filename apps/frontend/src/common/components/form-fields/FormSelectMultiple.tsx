@@ -1,6 +1,6 @@
 import ReadOnlyField from '@/common/components/form-fields/ReadOnlyField'
 import { FormFieldBaseProps, OptionType } from '@/common/components/form-fields/types'
-import { Autocomplete, Chip, TextField } from '@mui/material'
+import { Autocomplete, TextField } from '@mui/material'
 import { Controller, FieldPath, FieldValue, FieldValues } from 'react-hook-form'
 
 
@@ -10,13 +10,12 @@ type Props<TFieldValues extends FieldValues = FieldValues, TName extends FieldPa
         options: OptionType<FieldValue<TFieldValues>>[]
         fullWidth?: boolean
         multiple?: boolean
-        getOptionLabel: (value: OptionType<FieldValue<TFieldValues>>) => string
     }
 
-export default function FormSelectField<
+export default function FormSelectMultipleField<
     TFieldValues extends FieldValues = FieldValues,
     TName extends FieldPath<TFieldValues> = FieldPath<TFieldValues>,
->({ control, name, label, fullWidth, options, readOnly, multiple, getOptionLabel }: Props<TFieldValues, TName>) {
+>({ control, name, label, fullWidth, options, readOnly, multiple }: Props<TFieldValues, TName>) {
     return (
         <Controller
             control={control}
@@ -26,7 +25,7 @@ export default function FormSelectField<
                     <ReadOnlyField label={label} value={value} />
                 ) : (
                     <Autocomplete
-                        value={value || (multiple ? [] : null)}
+                        value={value || []}
                         onChange={(_, newValue) => {
                             onChange(newValue)
                         }}
@@ -35,18 +34,6 @@ export default function FormSelectField<
                         fullWidth={fullWidth}
                         multiple={multiple}
                         options={options || []}
-                        renderTags={(tagValue, getTagProps) =>
-                            tagValue.map((option, index) => {
-                                const { key, ...tagProps } = getTagProps({ index })
-                                return (
-                                    <Chip
-                                        key={key}
-                                        label={getOptionLabel(option)}
-                                        {...tagProps}
-                                    />
-                                )
-                            })}
-                        getOptionLabel={getOptionLabel}
                         renderInput={(params) => <TextField {...params} label={label} error={!!error} helperText={error?.message} />}
                     />
                 )}

@@ -1,5 +1,5 @@
 import ReadOnlyField from '@/common/components/form-fields/ReadOnlyField'
-import { FormFieldBaseProps } from '@/common/components/types'
+import { FormFieldBaseProps } from '@/common/components/form-fields/types'
 import { InputAdornment, InputBaseComponentProps, TextField } from '@mui/material'
 import { Controller, FieldPath, FieldValues } from 'react-hook-form'
 import { NumericFormat } from 'react-number-format'

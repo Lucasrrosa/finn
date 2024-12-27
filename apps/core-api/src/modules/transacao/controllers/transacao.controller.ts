@@ -4,7 +4,7 @@ import { FiltroTransacaoDto } from '@/modules/transacao/dto/FiltroTransacaoDto'
 import { CreateTransacaoUsecase } from '@/modules/transacao/usecases/CreateTransacao.usecase'
 import { FindOneTransacaoUsecase } from '@/modules/transacao/usecases/FindOneTransacao.usecase'
 import { FindTransacaoByFilterUsecase } from '@/modules/transacao/usecases/FindTransacaoByFilter.usecase'
-import { Body, Controller, Get, HttpCode, HttpStatus, Inject, Param, Post, Query } from '@nestjs/common'
+import { Body, Controller, Get, HttpCode, HttpStatus, Inject, Param, Post, Put, Query } from '@nestjs/common'
 
 @Controller('transacao')
 export class TransacaoController {
@@ -33,4 +33,21 @@ export class TransacaoController {
     async findOne(@Param('id') id: string, @Usuario() usuarioId: string) {
         return await this.findOneTransacaoUsecase.execute(id)
     }
+
+    @Put(':id/update-valor')
+    async changeValor(@Param('id') id: string, @Usuario() usuarioId: string) {
+        
+    }
+
+    @Put(':id/update-conta-bancaria')
+    async changeContaBancaria(@Param('id') id: string, @Usuario() usuarioId: string) {
+        
+    }
+
+    @Put(':id/update-conta-bancaria')
+    async changeCategoria(@Param('id') id: string, @Usuario() usuarioId: string) {
+        
+    }
+
+
 }

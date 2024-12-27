@@ -11,7 +11,7 @@ export class TransacaoRepository extends Repository<TransacaoEntity> {
 
     async findByFiltro(filtro: IFiltroTransacao, usuarioId): Promise<[TransacaoEntity[], number]> {
         const query =  this.createQueryBuilder('transacao')
-            .leftJoinAndSelect('transacao.categorias', 'categorias')
+            .leftJoinAndSelect('transacao.categoria', 'categoria')
             .leftJoinAndSelect('transacao.contaBancaria', 'conta')
             .where('transacao.usuario.id = :usuarioId', { usuarioId })
 

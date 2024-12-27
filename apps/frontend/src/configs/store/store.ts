@@ -3,6 +3,7 @@ import { naoAutorizadoMiddleware } from '@/configs/store/middleware/nao-autoriza
 import { autenticacaoApiSlice } from '@/modules/auth/store/auth-api-slice'
 import { autenticacaoReducer } from '@/modules/auth/store/auth-slice'
 import { contaBancariaApiSlice } from '@/modules/contas-bancarias/store/conta-bancaria-api-slice'
+import { categoriaTransacaoApiSlice } from '@/modules/transacoes/store/categoria-transacao-slice'
 import { transacaoApiSlice } from '@/modules/transacoes/store/transacao-api-slice'
 import { configureStore } from '@reduxjs/toolkit'
 
@@ -11,13 +12,15 @@ export const store = configureStore({
         autenticacao: autenticacaoReducer,
         [autenticacaoApiSlice.reducerPath]: autenticacaoApiSlice.reducer,
         [contaBancariaApiSlice.reducerPath]: contaBancariaApiSlice.reducer,
-        [transacaoApiSlice.reducerPath]: transacaoApiSlice.reducer
+        [transacaoApiSlice.reducerPath]: transacaoApiSlice.reducer,
+        [categoriaTransacaoApiSlice.reducerPath]: categoriaTransacaoApiSlice.reducer
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware()
             .concat(autenticacaoApiSlice.middleware)
             .concat(contaBancariaApiSlice.middleware)
             .concat(transacaoApiSlice.middleware)
+            .concat(categoriaTransacaoApiSlice.middleware)
             .concat(naoAutorizadoMiddleware)
             .concat(errorMessageMiddleware)
 })

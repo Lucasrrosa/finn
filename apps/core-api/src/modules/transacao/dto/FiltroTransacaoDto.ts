@@ -1,6 +1,6 @@
 import { IFiltroTransacao } from "@finn/api-contracts"
 import { Type } from "class-transformer"
-import { IsArray, IsDate, IsInt, IsOptional } from "class-validator"
+import { IsArray, IsDateString, IsInt, IsOptional } from "class-validator"
 
 export class FiltroTransacaoDto implements IFiltroTransacao {
     @IsArray()
@@ -11,11 +11,11 @@ export class FiltroTransacaoDto implements IFiltroTransacao {
     @IsOptional()
     categoriasId?: string[]
     
-    @IsDate()
+    @IsDateString()
     @IsOptional()
     dataInicio?: Date
     
-    @IsDate()
+    @IsDateString()
     @IsOptional()
     dataFim?: Date
     

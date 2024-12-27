@@ -7,9 +7,13 @@ export interface ICreateTransacaoDto {
     valor: number
     tipo: TransacaoType
     data: string
-    categorias: IIdDescricao[]
+    categoria: IIdDescricao
     computado?: boolean
     contaBancariaId: string
+}
+
+export interface IUpdateTransacaoDto extends Exclude<ICreateTransacaoDto, 'computado'>{
+    id: string
 }
 
 

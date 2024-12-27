@@ -2,7 +2,7 @@ import { EntidadeDeUsuario } from "@/common/entities/EntidadeDeUsuario"
 import { ContaBancariaEntity } from "@/modules/conta-bancaria/entities/conta-bancaria.entity"
 import { CategoriaTransacaoEntity } from "@/modules/transacao/entities/categoria-transacao.entity"
 import { TransacaoType } from "@finn/api-contracts"
-import { Column, Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
 
 @Entity()
 export class TransacaoEntity extends EntidadeDeUsuario {
@@ -28,9 +28,9 @@ export class TransacaoEntity extends EntidadeDeUsuario {
     })
     tipo: TransacaoType
 
-    @ManyToMany(() => CategoriaTransacaoEntity)
-    @JoinTable()
-    categorias: CategoriaTransacaoEntity[]
+    @ManyToOne(() => CategoriaTransacaoEntity)
+    @JoinColumn()
+    categoria: CategoriaTransacaoEntity
 
     @ManyToOne(() => ContaBancariaEntity, () => {}, { nullable: false, cascade: true })
     @JoinColumn()

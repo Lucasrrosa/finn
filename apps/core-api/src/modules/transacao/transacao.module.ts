@@ -4,6 +4,7 @@ import { CategoriaTransacaoEntity } from '@/modules/transacao/entities/categoria
 import { TransacaoEntity } from '@/modules/transacao/entities/transacao.entity'
 import { CategoriaTransacaoRepository } from '@/modules/transacao/repositories/categoria-transacao.repository'
 import { TransacaoRepository } from '@/modules/transacao/repositories/transacao.repository'
+import { CategoriaTransacaoService } from '@/modules/transacao/services/categoria-transacao.service'
 import { CreateTransacaoUsecase } from '@/modules/transacao/usecases/CreateTransacao.usecase'
 import { FindOneTransacaoUsecase } from '@/modules/transacao/usecases/FindOneTransacao.usecase'
 import { FindTransacaoByFilterUsecase } from '@/modules/transacao/usecases/FindTransacaoByFilter.usecase'
@@ -20,6 +21,7 @@ import { TransacaoController } from './controllers/transacao.controller'
     providers: [
         TransacaoRepository,
         CategoriaTransacaoRepository,
+        CategoriaTransacaoService,
         CreateTransacaoUsecase,
         FindOneTransacaoUsecase,
         FindTransacaoByFilterUsecase,

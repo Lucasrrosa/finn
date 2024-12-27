@@ -16,14 +16,21 @@ export const transacaoApiSlice = createApi({
                 data: body,
             }),
         }),
-        getByFiltro: builder.query<IPaginatedResult<ITransacaoBancariaResponseDto>, IFiltroTransacao>({
+        updateTransacao: builder.mutation<void, ICreateTransacaoDto>({
+            query: (body) => ({
+                method: 'PUT',
+                url: `${TRANSACAO_URL}`,
+                data: body,
+            }),
+        }),
+        getTransacaoByFiltro: builder.query<IPaginatedResult<ITransacaoBancariaResponseDto>, IFiltroTransacao>({
             query: (params) => ({
                 method: 'GET',
                 url: `${TRANSACAO_URL}`,
                 params
             }),
         }),
-        getOne: builder.query<ITransacaoBancariaResponseDto, string>({
+        getOneTransacao: builder.query<ITransacaoBancariaResponseDto, string>({
             query: (id) => ({
                 method: 'GET',
                 url: `${TRANSACAO_URL}/${id}`,
@@ -33,4 +40,9 @@ export const transacaoApiSlice = createApi({
 })
 
 
-
+export const {
+    useCreateTransacaoMutation,
+    useGetOneTransacaoQuery,
+    useGetTransacaoByFiltroQuery,
+    useUpdateTransacaoMutation
+} = transacaoApiSlice

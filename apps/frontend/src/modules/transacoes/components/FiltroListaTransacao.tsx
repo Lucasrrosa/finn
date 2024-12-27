@@ -2,6 +2,7 @@ import FormDatepickerField from '@/common/components/form-fields/pickers/FormDat
 import { dayjsSchemaValidator } from '@/common/validators/dayjs-schema-validator'
 import { IdDescricaoSchema } from '@/common/validators/id-descricao-schema'
 import ContaBancariaAutocomplete from '@/modules/contas-bancarias/components/ContaBancariaAutocomplete'
+import CateoriaTransacaoAutocomplete from '@/modules/transacoes/components/CategoriaTransacaoAutocomplete'
 import { IFiltroTransacao } from '@finn/api-contracts'
 import { zodResolver } from '@hookform/resolvers/zod'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
@@ -51,7 +52,11 @@ export default function FiltroListaTransacao({ onSubmitFilter }: Props) {
     }
 
     return (
-        <Accordion expanded={expanded} onChange={(_, isExpanded) => setExpanded(isExpanded)} > 
+        <Accordion
+            variant='outlined'
+            expanded={expanded}
+            onChange={(_, isExpanded) => setExpanded(isExpanded)}
+        > 
             <AccordionSummary
                 expandIcon={<ExpandMoreIcon/>}
             >
@@ -63,6 +68,13 @@ export default function FiltroListaTransacao({ onSubmitFilter }: Props) {
                         control={control}
                         name='contasBancarias'
                         label='Contas bancarias'
+                        multiple
+                        fullWidth
+                    />
+                    <CateoriaTransacaoAutocomplete
+                        control={control}
+                        name='categorias'
+                        label='Categorias'
                         multiple
                         fullWidth
                     />

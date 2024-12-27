@@ -13,7 +13,7 @@ export class FindOneTransacaoUsecase implements IBaseUsecase<string, ITransacaoB
         const transacao = await this.transacaoRepository.findOne({where: { id }})
 
         return {
-            categorias: transacao.categorias.map(i => ({ id: i.id, descricao: i.descricao })),
+            categoria: transacao.categoria,
             contaBancariaId: transacao.contaBancaria.id,
             data: transacao.data.toString(),
             descricao: transacao.descricao,

@@ -1,13 +1,12 @@
 import { showNotification } from '@/common/utils/notification'
-import { ContaBancariaForm } from '@/modules/contas-bancarias/components/ContaBancariaForm'
-import { useCreateContaBancariaMutation } from '@/modules/contas-bancarias/store/conta-bancaria-api-slice'
+import { TransacaoBancariaForm, TransacaoFormType } from '@/modules/transacoes/components/TransacaoBancariaForm'
+import { useCreateTransacaoMutation } from '@/modules/transacoes/store/transacao-api-slice'
 import { Box, Card, CardHeader, Typography } from '@mui/material'
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-
-export const CriarContaBancaria = () => {
-    const [execute, { isLoading, isSuccess }] = useCreateContaBancariaMutation()
+export const CriarTransacao = () => {
+    const [_, {isSuccess, isLoading}] = useCreateTransacaoMutation()
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -17,13 +16,16 @@ export const CriarContaBancaria = () => {
         }
     }, [navigate, isSuccess])
 
+    const onsubmitForm = (values: TransacaoFormType) => {
+        console.log(values)
+    }
     return (
         <Card variant='outlined'>
             <CardHeader title={<Typography variant='h6'>Nova conta bancaria</Typography>}/>
             <Box sx={{ p: 2 }}>
-                <ContaBancariaForm
+                <TransacaoBancariaForm
                     isSubmitLoading={isLoading}
-                    onSubmit={val => execute({nome: val.nome, saldoInicial: val.saldoInicial})}
+                    onSubmit={onsubmitForm}
                 />
             </Box>
         </Card>

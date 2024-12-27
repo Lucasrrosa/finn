@@ -7,7 +7,7 @@ const CONTA_BANCARIA_URL = '/conta-bancaria'
 export const contaBancariaApiSlice = createApi({
     reducerPath: 'contaBancariaApi',
     baseQuery: axiosBaseQuery(),
-    tagTypes: ['conta-bancaria'],
+    tagTypes: ['contas-bancarias'],
     endpoints: (builder) => ({
         createContaBancaria: builder.mutation<void, ICreateContaBancariaDto>({
             query: (body) => ({
@@ -15,6 +15,7 @@ export const contaBancariaApiSlice = createApi({
                 url: `${CONTA_BANCARIA_URL}`,
                 data: body,
             }),
+            invalidatesTags: ['contas-bancarias']
         }),
         findOneContaBancaria: builder.query<IContaBancariaResponseDto, string>({
             query: (id) => ({
@@ -22,20 +23,22 @@ export const contaBancariaApiSlice = createApi({
                 url: `${CONTA_BANCARIA_URL}/${id}`,
             }),
         }),
-
+        
         updateContaBancaria: builder.mutation<IContaBancariaResponseDto, {id: string} & IUpdateContaBancariaDto>({
             query: ({id, ...dto}) => ({
                 method: 'PATCH',
                 url: `${CONTA_BANCARIA_URL}/${id}`,
                 data: dto
-            })
+            }),
+            invalidatesTags: ['contas-bancarias']
         }),
-
+        
         findAllContaBancaria: builder.query<IContaBancariaResponseDto[], void>({
             query: () => ({
                 method: 'GET',
                 url: `${CONTA_BANCARIA_URL}`,
             }),
+            providesTags: ['contas-bancarias']
         }),
     }),
 })

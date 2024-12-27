@@ -4,7 +4,7 @@ import { ITransacaoBancariaResponseDto } from "@finn/api-contracts"
 export class TransacaoMapper {
     static entityToResponseDto(entity: TransacaoEntity): ITransacaoBancariaResponseDto {
         return {
-            categorias: entity.categorias.map(i => ({ id: i.id, descricao: i.descricao })),
+            categoria: entity.categoria ? { id: entity.categoria.id, descricao: entity.categoria.descricao } : undefined,
             contaBancariaId: entity.contaBancaria.id,
             data: entity.data.toString(),
             descricao: entity.descricao,

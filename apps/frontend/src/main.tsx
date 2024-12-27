@@ -30,7 +30,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 dateAdapter={AdapterDayjs}
             >
                 <ThemeProvider theme={theme}>
-                    <SnackbarProvider anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+                    <SnackbarProvider autoHideDuration={3000} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
                         <CssBaseline />
                         <RouterProvider router={ROUTES_CONFIG} />
                     </SnackbarProvider>

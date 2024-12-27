@@ -4,7 +4,6 @@ import { CategoriaTransacaoRepository } from "@/modules/transacao/repositories/c
 import { TransacaoRepository } from "@/modules/transacao/repositories/transacao.repository"
 import { ICreateTransacaoDto } from "@finn/api-contracts"
 import { BadRequestException, Inject, Injectable } from "@nestjs/common"
-import { In } from "typeorm"
 
 @Injectable()
 export class CreateTransacaoUsecase implements IUsecaseDeUsuario<ICreateTransacaoDto, void> {
@@ -26,9 +25,9 @@ export class CreateTransacaoUsecase implements IUsecaseDeUsuario<ICreateTransaca
             throw new BadRequestException('Não foi encontrada conta bancaria para os parametros informados')
 
 
-        const categorias = await this.categoriaTransacaoRepository.find({
+        const categoria = await this.categoriaTransacaoRepository.findOne({
             where: {
-                id: In(params.categorias.map(item => item.id))
+                id: params.categoria.id
             }
         })
 
@@ -41,7 +40,7 @@ export class CreateTransacaoUsecase implements IUsecaseDeUsuario<ICreateTransaca
             descricao: params.descricao,
             tipo: params.tipo,
             contaBancaria,
-            categorias,
+            categoria,
         })
 
         await this.transacaoRepository.save(newTransacao)
